@@ -3,23 +3,6 @@ session_start();
 if (!isset($_SESSION['intentos'])) {
     $_SESSION['intentos'] = 4; // Asegurar que el contador de intentos esté en 4
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $respuesta = $_POST['respuesta'];
-
-    if ($respuesta === 'correcta') {
-        header('Location: has-ganado.php');
-        exit;
-    } else {
-        $_SESSION['intentos']--;
-
-        if ($_SESSION['intentos'] === 0) {
-            header('Location: has-perdido.php');
-            exit;
-        } else {
-            $pista = "Pista: El nombre comienza con 'C'.";
-        }
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <div id="nivel1" class="netflix-bg">
+    <div id="nivel4" class="netflix-bg">
         <nav class="navbar">
             <div class="container">
                 <a class="navbar-brand" href="#">
@@ -41,25 +24,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </nav>
         <div class="hero">
             <div class="hero-content">
-                <h2 class="hero-title">Nivel 4: Fase Final</h2>
-                <h2 class="hero-subtitle">En la película El Club de la Lucha, ¿cuál es el verdadero nombre del personaje interpretado por Edward Norton, que sufre de insomnio y crea un alter ego llamado Tyler Durden para escapar de su vida monótona?</h2>
-                <img src="../img/pregunta4.jpg" alt="Pregunta 1" class="pregunta-img">
-                <form method="POST" action="">
-                    <div class="opciones">
-                        <label class="btn-opcion">
-                            <input type="radio" name="respuesta" value="incorrecta"> Jack
-                        </label>
-                        <label class="btn-opcion">
-                            <input type="radio" name="respuesta" value="incorrecta"> Robert Paulson
-                        </label>
-                        <label class="btn-opcion">
-                            <input type="radio" name="respuesta" value="correcta"> Cornelius
-                        </label>
+                <h2 class="hero-title">Nivel 4: Juego de Memoria</h2>
+                <div class="memory-game">
+                    <div class="memory-card" data-framework="a">
+                        <img class="front-face" src="../img/1.jpg" alt="A" />
+                        <img class="back-face" src="../img/pregunta4/back.jpeg" alt="Back" />
                     </div>
-                    <button type="submit" class="btn btn-danger">Enviar</button>
-                </form>
-                <p class="intentos">Intentos restantes: <?php echo $_SESSION['intentos']; ?></p>
-                <?php if (isset($pista)) { echo "<p class='pista'>$pista</p>"; } ?>
+                    <div class="memory-card" data-framework="a">
+                        <img class="front-face" src="../img/1.jpg" alt="A" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="b">
+                        <img class="front-face" src="../img/b.png" alt="B" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="b">
+                        <img class="front-face" src="../img/b.png" alt="B" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="c">
+                        <img class="front-face" src="../img/c.png" alt="C" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="c">
+                        <img class="front-face" src="../img/c.png" alt="C" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="d">
+                        <img class="front-face" src="../img/d.png" alt="D" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="d">
+                        <img class="front-face" src="../img/d.png" alt="D" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="e">
+                        <img class="front-face" src="../img/e.png" alt="E" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="e">
+                        <img class="front-face" src="../img/e.png" alt="E" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="f">
+                        <img class="front-face" src="../img/f.png" alt="F" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                    <div class="memory-card" data-framework="f">
+                        <img class="front-face" src="../img/f.png" alt="F" />
+                        <img class="back-face" src="../img/back.png" alt="Back" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
